@@ -31,8 +31,8 @@ class LoginController extends Controller
         }
         $group = Group::where('group_login', $request->username)->first();
         if ($group) {
-            // echo "Group found";
-            return redirect()->route('group');
+            echo $group->group_id;
+            return redirect()->route('group', ['groupId' => $group->group_id]); // Pass group ID as a parameter
         }
         echo "No user found";
     }

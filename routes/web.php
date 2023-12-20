@@ -22,8 +22,9 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'auth'])->name('auth');
 
 // GROUP
-Route::get('/group', [GroupController::class, 'index'])->name('group');
-Route::post('/group', [GroupController::class, 'edit'])->name('EditProject');
+Route::get('/group/{groupId}', [GroupController::class, 'index'])->name('group');
+Route::post('/group/{projectId}', [GroupController::class, 'edit'])->name('EditProject');
+
 
 // ADMIN
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
