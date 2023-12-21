@@ -26,8 +26,7 @@ class LoginController extends Controller
         }
         $evaluator = Evaluator::where('evaluator_login', $request->username)->first();
         if ($evaluator) {
-            echo "Evaluator found";
-            return;
+            return redirect()->route('evaluator', ['evaluatorId' => $evaluator->evaluator_id]); // Pass evaluator ID as a parameter
         }
         $group = Group::where('group_login', $request->username)->first();
         if ($group) {

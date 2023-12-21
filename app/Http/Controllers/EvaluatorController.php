@@ -11,6 +11,31 @@ use App\Models\Evaluator;
 
 class EvaluatorController extends Controller
 {
+    public function index($evaluatorId){
+
+        //Fetch all evaluations (Max 5) against this evaluatorID
+        $evaluations = DB::table('evaluations')
+        ->where('evaluator_id', $evaluatorId)
+        ->take(5)
+        ->get();
+
+        $records = [];
+
+        foreach ($evaluations as $evaluation) {
+            $project = DB::table('projects')->where('project_id', $evaluation->project_id)->first();
+            $record = [
+                'project_id' => $project->project_id,
+                'project_name' => $project->project_name,
+                'project_details' => $project->project_details,
+                'location' => $project->location_id,
+                'evaluation_rating' => $evaluation->evaluation_rating !== null ? $evaluation->evaluation_rating : 'null'
+            ];
+            $records[] = $record;
+        }
+
+        return view('evaluator')->with('evaluatorId',$evaluatorId)->with('records', $records);
+    }
+    
     //Funtion to retrieve match project keywords and evaluator preferences and select top 5
     public function assignProjects($evaluatorId){
         
@@ -57,6 +82,21 @@ class EvaluatorController extends Controller
         
         //Evaluation entries created , now route back to admin page
         return redirect()->route('admin');
+
+    }
+
+    public function updateRating(Request $request,$evaluatorId){
+
+        // Retrieve form data
+        $projectId = $request->input('project_id');
+        $rating = $request->input('rating');
+
+        DB::table('evaluations')
+            ->where('evaluator_id', $evaluatorId)
+            ->where('project_id', $projectId)
+            ->update(['evaluation_rating' => $rating]);
+        
+        return redirect()->route('evaluator', ['evaluatorId' => $evaluatorId]);
 
     }
 }

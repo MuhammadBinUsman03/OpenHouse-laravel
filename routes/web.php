@@ -34,5 +34,6 @@ Route::post('/admin', [AdminController::class, 'submitProject'])->name('SubmitPr
 Route::post('/adminEval', [AdminController::class, 'registerEvaluator'])->name('RegisterEvaluator');
 
 // EVALUATOR
-// Route::get('/evaluator', [EvaluatorController::class, 'index'])->name('evaluator');
+Route::get('/evaluatorHome/{evaluatorId}', [EvaluatorController::class, 'index'])->name('evaluator');
 Route::get('/evaluator/{evaluatorId}', [EvaluatorController::class, 'assignProjects'])->name('AssignProjects');
+Route::post('/evaluatorUpdate/{evaluatorId}', [EvaluatorController::class, 'updateRating'])->name('EvaluateProjects');
