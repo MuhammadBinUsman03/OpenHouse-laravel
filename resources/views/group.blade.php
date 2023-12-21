@@ -38,6 +38,14 @@
                             <b id='ProjKeywords'>$project->project_keywords</b>
                         </div>
                     </div>
+                    <div class='row'>
+                    <div class='col p-0'>
+                        <h4>Number of Evaluators </h4>
+                    </div>
+                    <div class='col'>
+                        <b id='ProjKeywords'>$evaluatorsCount</b>
+                    </div>
+                </div>
                 </div>
                 ";
                 echo "<h1> Edit Project Details</h1></div>";

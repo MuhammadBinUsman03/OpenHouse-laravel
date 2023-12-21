@@ -16,7 +16,9 @@ class GroupController extends Controller
         // Fetch project details for the  id
         $projectID = DB::table('groups')->where('group_id', "$groupId")->value('project_id');
         $project = DB::table('projects')->where('project_id', "$projectID")->first();
-        return view('group',["project"=>$project]);
+
+        $evaluatorsCount = DB::table('evaluations')->where('project_id', $projectID)->count();
+        return view('group',["project"=>$project,"evaluatorsCount"=>$evaluatorsCount]);
     }
 
     public function edit(Request $request, $projectId){
