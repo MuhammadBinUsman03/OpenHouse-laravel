@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('evaluation_id');
             $table->foreignId('evaluator_id')->constrained('evaluators', 'evaluator_id');
             $table->foreignId('project_id')->constrained('projects', 'project_id');
-            $table->enum('evaluation_rating', ['1 (lowest)', '2', '3', '4', '5', '6', '7', '8', '9', '10 (highest)']);
+            $table->enum('evaluation_rating', ['1 (lowest)', '2', '3', '4', '5', '6', '7', '8', '9', '10 (highest)'])->nullable();
             $table->timestamps();
         });
     }

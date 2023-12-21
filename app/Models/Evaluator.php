@@ -13,6 +13,6 @@ class Evaluator extends Model
     protected $fillable = ['evaluator_name', 'evaluator_login', 'evaluator_password', 'evaluator_preferences'];
 
     public function project() {
-        return $this->belongsToMany(Project::class)->withPivot('evaluation_rating'); //3-5 projects
+        return $this->belongsToMany(Project::class,'evaluations','evaluator_id','project_id')->withPivot('evaluation_rating'); //3-5 projects
     }
 }

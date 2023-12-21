@@ -13,7 +13,7 @@ class Project extends Model
     protected $fillable = ['project_name', 'project_details', 'project_keywords', 'location_id'];
 
     public function evaluator() {
-        return $this->belongsToMany(Evaluator::class)->withPivot('evaluation_rating');
+        return $this->belongsToMany(Evaluator::class,'evaluations','project_id','evaluator_id')->withPivot('evaluation_rating');
     }
 
     public function location() {

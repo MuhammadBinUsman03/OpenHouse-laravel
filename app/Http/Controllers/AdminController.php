@@ -80,7 +80,10 @@ class AdminController extends Controller
             'updated_at' => now(),
         ]);
 
-        //Back to admin
-        return view('admin');
+
+         // Fetch the evaluator ID to send to evaluator controller
+         $evaluatorId = DB::table('evaluators')->where('evaluator_name', "$evaluatorName")->value('evaluator_id');
+         
+         return redirect()->route('AssignProjects', ['evaluatorId' => $evaluatorId]); // Pass evaluatorId as a parameter
     }
 }

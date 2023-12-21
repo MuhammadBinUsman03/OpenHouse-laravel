@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\EvaluatorController;
 use App\Http\Controllers\AdminController;
 
 
@@ -33,3 +34,4 @@ Route::post('/adminEval', [AdminController::class, 'registerEvaluator'])->name('
 
 // EVALUATOR
 // Route::get('/evaluator', [EvaluatorController::class, 'index'])->name('evaluator');
+Route::get('/evaluator/{evaluatorId}', [EvaluatorController::class, 'assignProjects'])->name('AssignProjects');
