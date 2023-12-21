@@ -16,6 +16,7 @@
             <div class="col-md-6">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-primary" onclick="showAddProject()">Add Project</button>
+                    <button type="button" class="btn btn-success" onclick="RegisterEvaluator()">Register Evaluator</button>
                     <button type="button" class="btn btn-secondary" onclick="showManageLocations()">Manage Locations</button>
                 </div>
             </div>
@@ -77,6 +78,26 @@
                 memberNamesDiv.appendChild(inputField);
             }   
         });
+        }
+
+        function RegisterEvaluator() {
+            document.getElementById('content').innerHTML = `
+                <div class="container mt-5">
+                    <h1>Add Evaluator</h1>
+                    <form method="POST" action="{{ route('RegisterEvaluator') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="evaluator_name">Evaluator Name:</label>
+                            <input type="text" class="form-control" id="evaluator_name" name="evaluator_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="evaluator_preferences">Preferences:</label>
+                            <input type="text" class="form-control" id="evaluator_preferences" name="evaluator_preferences" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Evaluator</button>
+                    </form>
+                </div>
+            `;
         }
 
         function showManageLocations() {

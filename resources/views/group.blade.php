@@ -42,22 +42,6 @@
                 ";
                 echo "<h1> Edit Project Details</h1></div>";
                 
-                // Edit form
-                // echo "
-                // <form method='POST' action='{{ route('EditProject') }}'>
-                //     @csrf
-                //     <div class='form-group'>
-                //         <label for='project_details'>Project Details:</label>
-                //         <textarea class='form-control' id='project_details' name='project_details' rows='4' required></textarea>
-                //     </div>
-                //     <div class='form-group'>
-                //         <label for='keywords'>Keywords (space-separated):</label>
-                //         <input type='text' class='form-control' id='keywords' name='keywords' required>
-                //     </div>
-                //     <button type='submit' class='btn btn-primary'>Edit Details</button>
-                // </form>
-                // </div>
-                // ";
             }
         ?>
         <script>

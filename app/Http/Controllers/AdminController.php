@@ -16,7 +16,7 @@ class AdminController extends Controller
         return view('admin');
     }
 
-    public function submit(Request $request){
+    public function submitProject(Request $request){
         // Retrieve form data
         $projectName = $request->input('project_name');
         $memberCount = $request->input('member_count');
@@ -60,6 +60,27 @@ class AdminController extends Controller
                 'updated_at' => now(),
             ]);
         }
+
+        //Back to admin
+        return view('admin');
+    }
+
+    public function registerEvaluator(Request $request){
+        // Retrieve form data
+        $evaluatorName = $request->input('evaluator_name');
+        $evaluatorPrefs = $request->input('evaluator_preferences');
+
+        //Insert into evaluators
+        DB::table('evaluators')->insert([
+            'evaluator_name' => $evaluatorName,
+            'evaluator_login' => 'eval' . $evaluatorName,
+            'evaluator_password' => bcrypt('eval' . $evaluatorName),
+            'evaluator_preferences' => $evaluatorPrefs,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        //Back to admin
         return view('admin');
     }
 }

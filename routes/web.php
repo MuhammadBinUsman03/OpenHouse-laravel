@@ -28,4 +28,8 @@ Route::post('/group/{projectId}', [GroupController::class, 'edit'])->name('EditP
 
 // ADMIN
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::post('/admin', [AdminController::class, 'submit'])->name('SubmitProject');
+Route::post('/admin', [AdminController::class, 'submitProject'])->name('SubmitProject');
+Route::post('/adminEval', [AdminController::class, 'registerEvaluator'])->name('RegisterEvaluator');
+
+// EVALUATOR
+// Route::get('/evaluator', [EvaluatorController::class, 'index'])->name('evaluator');
