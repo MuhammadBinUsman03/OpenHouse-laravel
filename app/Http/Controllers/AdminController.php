@@ -48,7 +48,7 @@ class AdminController extends Controller
             'updated_at' => now(),
         ]);
 
-        // Fetch the project ID using the project name
+        // Fetch the group ID using the project id
         $groupId = DB::table('groups')->where('project_id', "$projectId")->value('group_id');
 
         // Create Students and add into database
@@ -61,8 +61,8 @@ class AdminController extends Controller
             ]);
         }
 
-        //Back to admin
-        return view('admin');
+        //Redirect route towards group controller for evaluator assignment
+        return redirect()->route('AssignEvaluators', ['groupId' => $groupId]); // Pass groupId as a parameter
     }
 
     public function registerEvaluator(Request $request){
@@ -84,6 +84,7 @@ class AdminController extends Controller
          // Fetch the evaluator ID to send to evaluator controller
          $evaluatorId = DB::table('evaluators')->where('evaluator_name', "$evaluatorName")->value('evaluator_id');
          
+         //Redirect route towards evaluator controller for projects assignment
          return redirect()->route('AssignProjects', ['evaluatorId' => $evaluatorId]); // Pass evaluatorId as a parameter
     }
 }

@@ -24,6 +24,7 @@ Route::post('/login', [LoginController::class, 'auth'])->name('auth');
 
 // GROUP
 Route::get('/group/{groupId}', [GroupController::class, 'index'])->name('group');
+Route::get('/groupEval/{groupId}', [GroupController::class, 'assignEvaluators'])->name('AssignEvaluators');
 Route::post('/group/{projectId}', [GroupController::class, 'edit'])->name('EditProject');
 
 
